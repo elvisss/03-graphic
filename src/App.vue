@@ -6,6 +6,28 @@
   <router-view/>
 </template>
 
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
+
+@Options({
+  sockets: {
+    connect: () => {
+      console.log('connected');
+    },
+    disconnect: () => {
+      console.log('disconnected');
+    }
+  }
+})
+export default class App extends Vue {
+  $socket: any;
+
+  created() {
+    console.log(this.$socket);
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
